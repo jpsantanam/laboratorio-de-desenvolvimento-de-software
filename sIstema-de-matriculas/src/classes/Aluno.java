@@ -3,18 +3,40 @@ import java.util.ArrayList;
 public class Aluno extends Usuario {
     private final int MAX_DISCIPlINAS_OBRIGATORIAS = 4;
     private final int MAX_DISCIPlINAS_OPTATIVAS = 2;
-    private ArrayList<Disciplina> disciplinasMatriculadas;
+    private ArrayList<MatriculaCurso> cursos;
+    private ArrayList<MatriculaDisciplina> disciplinas;
 
     public Aluno(String nome, String senha, String id) {
         super(nome, senha, id);
-        this.disciplinasMatriculadas = new ArrayList<Disciplina>();
+        this.cursos = new ArrayList<MatriculaCurso>();
+        this.disciplinas = new ArrayList<MatriculaDisciplina>();
     }
 
-    public void criarMatricula() {
+    public ArrayList<MatriculaCurso> getCursos() {
+        return cursos;
+    }
+
+    public ArrayList<MatriculaDisciplina> getDisciplinas() {
+        return disciplinas;
+    }
+
+    public void setCursos(ArrayList<MatriculaCurso> cursos) {
+        this.cursos = cursos;
+    }
+
+    public void setDisciplinas(ArrayList<MatriculaDisciplina> disciplinas) {
+        this.disciplinas = disciplinas;
+    }
+
+    public void matricularCurso() {
         //TODO
     }
 
-    public void cancelarMatricula(Matricula matricula) {
+    public void matricularDisciplina() {
+        //TODO
+    }
+
+    public void cancelarMatricula() {
         //TODO
     }
 }

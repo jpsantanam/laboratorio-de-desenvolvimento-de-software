@@ -1,19 +1,17 @@
 import java.util.ArrayList;
 
-public class Disciplina {
-    private final int MAX_MATRICULAS = 60;
-    private final int MIN_MATRICULAS = 3;
+public class Curso {
     private String nome;
     private int creditos;
-    private boolean ativa;
+    private ArrayList<CursoDisciplina> gradeDisciplinas;
     private AreasConhecimento areaDoConhecimento;
     private ArrayList<Matricula> matriculas;
 
-    public Disciplina(String nome, int creditos, boolean ativa, AreasConhecimento areaDoConhecimento,
-            ArrayList<Matricula> matriculas) {
+    public Curso(String nome, int creditos, ArrayList<CursoDisciplina> gradeDisciplinas,
+            AreasConhecimento areaDoConhecimento, ArrayList<Matricula> matriculas) {
         this.nome = nome;
         this.creditos = creditos;
-        this.ativa = ativa;
+        this.gradeDisciplinas = gradeDisciplinas;
         this.areaDoConhecimento = areaDoConhecimento;
         this.matriculas = matriculas;
     }
@@ -26,8 +24,8 @@ public class Disciplina {
         return creditos;
     }
 
-    public boolean isAtiva() {
-        return ativa;
+    public ArrayList<CursoDisciplina> getGradeDisciplinas() {
+        return gradeDisciplinas;
     }
 
     public AreasConhecimento getAreaDoConhecimento() {
@@ -46,8 +44,8 @@ public class Disciplina {
         this.creditos = creditos;
     }
 
-    public void setAtiva(boolean ativa) {
-        this.ativa = ativa;
+    public void setGradeDisciplinas(ArrayList<CursoDisciplina> gradeDisciplinas) {
+        this.gradeDisciplinas = gradeDisciplinas;
     }
 
     public void setAreaDoConhecimento(AreasConhecimento areaDoConhecimento) {
@@ -56,9 +54,5 @@ public class Disciplina {
 
     public void setMatriculas(ArrayList<Matricula> matriculas) {
         this.matriculas = matriculas;
-    }
-
-    public void setAtiva(ArrayList<Matricula> matriculas) {
-        // TODO
     }
 }
