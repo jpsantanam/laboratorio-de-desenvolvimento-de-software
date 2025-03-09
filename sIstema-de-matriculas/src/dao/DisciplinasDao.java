@@ -6,21 +6,21 @@ import java.util.List;
 
 import model.Disciplina;
 
-public class Disciplinas extends AbstractDao implements Serializable {
+public class DisciplinasDao extends AbstractDao implements Serializable {
 
     private List<Disciplina> disciplinas;
-    private static Disciplinas instance;
+    private static DisciplinasDao instance;
 
     private final String localArquivo = "sistema-de-matriculas/src/data/Disciplinas.dat";
 
-    private Disciplinas() {
+    private DisciplinasDao() {
         this.disciplinas = new ArrayList<>();
         carregaDisciplinas();
     }
 
-    public static Disciplinas getInstance() {
+    public static DisciplinasDao getInstance() {
         if (instance == null) {
-            instance = new Disciplinas();
+            instance = new DisciplinasDao();
         }
         return instance;
     }
@@ -45,6 +45,13 @@ public class Disciplinas extends AbstractDao implements Serializable {
     public void excluirDisciplina(Disciplina disciplina) {
         disciplinas.remove(disciplina);
         grava();
+    }
+
+    public Disciplina getDisciplinaById(String id) {
+        return disciplinas.stream()
+                .filter(disciplina -> disciplina.getId().equals(id))
+                .findFirst()
+                .orElse(null);
     }
 
     public Disciplina buscarDisciplinaPorNome(String nome) {

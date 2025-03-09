@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Curso;
+import model.Disciplina;
 
 public class CursosDao extends AbstractDao implements Serializable {
 
@@ -52,5 +53,10 @@ public class CursosDao extends AbstractDao implements Serializable {
                 .filter(curso -> curso.getNome().equals(nome))
                 .findFirst()
                 .orElse(null);
+    }
+
+    public void addDisciplina(Curso curso, Disciplina disciplina) {
+        cursos.get(cursos.indexOf(curso)).addDisciplina(disciplina);
+        grava();
     }
 }

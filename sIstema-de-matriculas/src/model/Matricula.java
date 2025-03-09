@@ -1,17 +1,17 @@
 package model;
 
-public class Matricula {
+import java.io.Serializable;
+
+public class Matricula implements Serializable {
     private Aluno aluno;
     private Disciplina disciplina;
-    private Double valor;
 
     public Matricula() {
     }
 
-    public Matricula(Aluno aluno, Disciplina disciplina, Double valor) {
+    public Matricula(Aluno aluno, Disciplina disciplina) {
         this.aluno = aluno;
         this.disciplina = disciplina;
-        this.valor = valor;
     }
 
     public Aluno getAluno() {

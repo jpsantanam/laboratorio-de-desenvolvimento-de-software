@@ -1,18 +1,17 @@
 package model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
-public class Professor implements Serializable {
+public class UsuarioSecretaria implements Serializable {
     private String nome;
     private String id;
     private String senha;
     private String email;
 
-    public Professor() {
+    public UsuarioSecretaria() {
     }
 
-    public Professor(String nome, String id, String senha, String email) {
+    public UsuarioSecretaria(String nome, String id, String senha, String email) {
         this.nome = nome;
         this.id = id;
         this.senha = senha;
@@ -23,7 +22,11 @@ public class Professor implements Serializable {
         return nome;
     }
 
-    public String toString() {
-        return "Nome: " + nome + "\nID: " + id + "\nE-mail: " + email;
+    public String getEmail() {
+        return email;
+    }
+
+    public String getSenha() {
+        return senha;
     }
 }

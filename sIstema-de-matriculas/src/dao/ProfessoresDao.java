@@ -6,21 +6,21 @@ import java.util.List;
 
 import model.Professor;
 
-public class Professores extends AbstractDao implements Serializable {
+public class ProfessoresDao extends AbstractDao implements Serializable {
 
     private List<Professor> professores;
-    private static Professores instance;
+    private static ProfessoresDao instance;
 
     private final String localArquivo = "sistema-de-matriculas/src/data/Professores.dat";
 
-    private Professores() {
+    private ProfessoresDao() {
         this.professores = new ArrayList<>();
         carregaProfessores();
     }
 
-    public static Professores getInstance() {
+    public static ProfessoresDao getInstance() {
         if (instance == null) {
-            instance = new Professores();
+            instance = new ProfessoresDao();
         }
         return instance;
     }

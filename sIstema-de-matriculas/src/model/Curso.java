@@ -8,7 +8,6 @@ public class Curso implements Serializable {
     private String id;
     private int creditos;
     private ArrayList<Disciplina> disciplinas;
-    private ArrayList<Aluno> alunos;
 
     public Curso() {
     }
@@ -24,7 +23,28 @@ public class Curso implements Serializable {
         return nome;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public ArrayList<Disciplina> getDisciplinas() {
+        return disciplinas;
+    }
+
+    public void addDisciplina(Disciplina disciplina) {
+        System.out.println(disciplina);
+        disciplinas.add(disciplina);
+    }
+
+    public String getDisciplinasString() {
+        String disciplinasString = "";
+        for (Disciplina disciplina : disciplinas) {
+            disciplinasString += disciplina.toString() + "\n";
+        }
+        return disciplinasString;
+    }
+
     public String toString() {
-        return "Curso: " + nome + " | Créditos: " + creditos;
+        return "Curso: " + nome + " | Créditos: " + creditos + " | ID: " + id;
     }
 }

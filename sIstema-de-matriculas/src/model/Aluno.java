@@ -8,13 +8,13 @@ public class Aluno implements Serializable {
     private String numeroMatricula;
     private String senha;
     private String email;
-    private String curso;
+    private Curso curso;
     private ArrayList<Matricula> matriculas;
 
     public Aluno() {
     }
 
-    public Aluno(String nome, String numeroMatricula, String email, String senha, String curso) {
+    public Aluno(String nome, String numeroMatricula, String email, String senha, Curso curso) {
         this.nome = nome;
         this.numeroMatricula = numeroMatricula;
         this.senha = senha;
@@ -27,7 +27,20 @@ public class Aluno implements Serializable {
         return nome;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public Curso getCurso() {
+        return curso;
+    }
+
     public String toString() {
-        return "Nome: " + nome + "\nNúmero de Matrícula: " + numeroMatricula + "\nE-mail: " + email + "\nCurso: " + curso;
+        return "Nome: " + nome + "\nNúmero de Matrícula: " + numeroMatricula + "\nE-mail: " + email + "\nCurso: "
+                + curso;
     }
 }
