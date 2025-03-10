@@ -45,6 +45,6 @@ public class Curso implements Serializable {
     }
 
     public String toString() {
-        return "Curso: " + nome + " | Créditos: " + creditos + " | ID: " + id;
+        return "Curso: " + nome + " | Créditos: " + creditos + " | ID: " + id + "\nDisciplinas:\n" + getDisciplinasString();
     }
 }

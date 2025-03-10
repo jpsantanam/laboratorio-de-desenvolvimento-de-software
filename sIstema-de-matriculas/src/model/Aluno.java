@@ -1,7 +1,6 @@
 package model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 public class Aluno implements Serializable {
     private String nome;
@@ -9,7 +8,6 @@ public class Aluno implements Serializable {
     private String senha;
     private String email;
     private Curso curso;
-    private ArrayList<Matricula> matriculas;
 
     public Aluno() {
     }
@@ -20,7 +18,6 @@ public class Aluno implements Serializable {
         this.senha = senha;
         this.email = email;
         this.curso = curso;
-        this.matriculas = new ArrayList<Matricula>();
     }
 
     public String getNome() {
@@ -37,6 +34,18 @@ public class Aluno implements Serializable {
 
     public Curso getCurso() {
         return curso;
+    }
+
+    public String getId() {
+        return numeroMatricula;
+    }
+
+    public boolean equals(Object obj) {
+        if (obj instanceof Aluno) {
+            Aluno aluno = (Aluno) obj;
+            return aluno.getId().equals(this.getId());
+        }
+        return false;
     }
 
     public String toString() {

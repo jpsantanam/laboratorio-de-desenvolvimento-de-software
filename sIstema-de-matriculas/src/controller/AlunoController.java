@@ -1,6 +1,7 @@
 package controller;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import dao.AlunosDao;
 import model.Aluno;
@@ -18,8 +19,8 @@ public class AlunoController {
         alunos.addAluno(new Aluno(nome, matricula, email, senha, curso));
     }
 
-    public void listarAlunos() {
-        alunos.getAlunos().forEach(aluno -> System.out.println(aluno));
+    public List<Aluno> listarAlunos() {
+        return alunos.getAlunos();
     }
 
     public Aluno login(String email, String senha) {

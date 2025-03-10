@@ -19,11 +19,12 @@ public class SistemaView {
     }
 
     public void menu() {
-        System.out.println("Digite o tipo de usuário: ");
+        System.out.println("\nBem-vindo ao sistema de matrículas");
         System.out.println("1 - Aluno");
         System.out.println("2 - Professor");
         System.out.println("3 - Usuário da secretaria");
         System.out.println("4 - Sair");
+        System.out.print("Digite o tipo de usuário: ");
 
         int tipoUsuario = scanner.nextInt();
 

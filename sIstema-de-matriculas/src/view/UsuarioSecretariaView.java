@@ -34,15 +34,15 @@ public class UsuarioSecretariaView {
 
     public void addDefaultUser() {
         usuarioSecretariaController.addUsuarioSecretaria("admin", "admin", "admin");
-        System.out.println("Usuário padrão adicionado com sucesso!");
+        System.out.println("\nUsuário padrão adicionado com sucesso!");
         System.out.println("Email: admin");
         System.out.println("Senha: admin");
     }
 
     public UsuarioSecretaria login() {
-        System.out.println("Digite o email do usuário: ");
+        System.out.print("Digite o email do usuário: ");
         String email = scanner.nextLine();
-        System.out.println("Digite a senha do usuário: ");
+        System.out.print("Digite a senha do usuário: ");
         String senha = scanner.nextLine();
         UsuarioSecretaria usuario = usuarioSecretariaController.login(email, senha);
         if (usuario != null) {
@@ -54,11 +54,13 @@ public class UsuarioSecretariaView {
     }
 
     public void menu() {
+        System.out.println("\nMenu do usuário da secretaria");
         System.out.println("1 - Aluno");
         System.out.println("2 - Professor");
         System.out.println("3 - Disciplina");
         System.out.println("4 - Curso");
         System.out.println("5 - Sair");
+        System.out.print("Digite a opção desejada: ");
 
         int opcao = scanner.nextInt();
 

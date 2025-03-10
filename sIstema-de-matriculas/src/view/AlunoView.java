@@ -1,5 +1,6 @@
 package view;
 
+import java.util.List;
 import java.util.Scanner;
 
 import controller.AlunoController;
@@ -8,6 +9,7 @@ import controller.MatriculaController;
 import model.Aluno;
 import model.Curso;
 import model.Disciplina;
+import model.Matricula;
 
 public class AlunoView {
     private AlunoController alunoController;
@@ -36,17 +38,24 @@ public class AlunoView {
         alunoController.addAluno(nome, email, senha, curso);
     }
 
-    public void listarAlunos() {
-        alunoController.listarAlunos();
+    public List<Aluno> listarAlunos() {
+        List<Aluno> alunos = alunoController.listarAlunos();
+        alunos.forEach(aluno -> System.out.println(alunos.indexOf(aluno) + 1 + " - " + aluno));
+        return alunos;
     }
 
     public void escolherDisciplina(Aluno aluno) {
         System.out.println("Escolha a disciplina: ");
-        aluno.getCurso().getDisciplinas().forEach(disciplina -> System.out.println(disciplina));
-        scanner.nextLine();
-        String id = scanner.nextLine();
-        Disciplina disciplina = disciplinaController.getDisciplinaById(id);
-        matriculaController.addMatricula(aluno, disciplina);
+        List<Disciplina> disciplinas = disciplinaController.getDisciplinas().stream()
+                .filter(disciplina -> !disciplinaController.isFull(disciplina)).toList();
+        disciplinas.forEach(disciplina -> System.out.println(disciplinas.indexOf(disciplina) + 1 + " - " + disciplina));
+        int id = scanner.nextInt();
+        Disciplina disciplina = disciplinas.get(id - 1);
+        try {
+            matriculaController.addMatricula(aluno, disciplina);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public Aluno login() {
@@ -63,12 +72,28 @@ public class AlunoView {
         }
     }
 
+    public void cancelarMatricula(Aluno aluno) {
+        List<Matricula> matriculas = visualizarMatriculas(aluno);
+        int id = scanner.nextInt();
+        Matricula matricula = matriculas.get(id - 1);
+        matriculaController.excluirMatricula(matricula);
+    }
+
+    public List<Matricula> visualizarMatriculas(Aluno aluno) {
+        System.out.println("Matrículas do aluno: ");
+        List<Matricula> matriculas = matriculaController.getMatriculaByAluno(aluno);
+        matriculas.forEach(matricula -> System.out.println(matriculas.indexOf(matricula) + 1 + " - " + matricula));
+        return matriculas;
+    }
+
     public void menu(Aluno aluno) {
         int opcao = 0;
-        while (opcao != 3) {
+        while (opcao != 4) {
+            System.out.println("Menu do aluno");
             System.out.println("1 - Escolher disciplina");
             System.out.println("2 - Cancelar matrícula");
-            System.out.println("3 - Sair");
+            System.out.println("3 - Visualizar matrículas");
+            System.out.println("4 - Sair\n");
             opcao = scanner.nextInt();
             scanner.nextLine();
             switch (opcao) {
@@ -76,9 +101,12 @@ public class AlunoView {
                     escolherDisciplina(aluno);
                     break;
                 case 2:
-                    listarAlunos();
+                    cancelarMatricula(aluno);
                     break;
                 case 3:
+                    visualizarMatriculas(aluno);
+                    break;
+                case 4:
                     System.out.println("Saindo...");
                     break;
                 default:
@@ -87,11 +115,11 @@ public class AlunoView {
         }
     }
 
-    public void menu(){
+    public void menu() {
+        System.out.println("Menu do aluno");
         System.out.println("1 - Adicionar aluno");
         System.out.println("2 - Listar alunos");
-        System.out.println("3 - Excluir aluno");
-        System.out.println("4 - Sair");
+        System.out.println("3 - Sair\n");
         int opcao = scanner.nextInt();
         scanner.nextLine();
         switch (opcao) {

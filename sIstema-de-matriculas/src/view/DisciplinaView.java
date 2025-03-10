@@ -1,5 +1,6 @@
 package view;
 
+import java.util.List;
 import java.util.Scanner;
 
 import controller.DisciplinaController;
@@ -21,16 +22,18 @@ public class DisciplinaView {
         disciplinaController.addDisciplina(nome, professor);
     }
 
-    public void listarDisciplinas() {
-        disciplinaController.getDisciplinas().forEach(disciplina -> System.out.println(disciplina));
+    public List<Disciplina> listarDisciplinas() {
+        System.out.println("Disciplinas: ");
+        List<Disciplina> disciplinas = disciplinaController.getDisciplinas();
+        disciplinas.forEach(disciplina -> System.out.println(disciplinas.indexOf(disciplina) + 1 + " - " + disciplina));
+        return disciplinas;
     }
 
     public Disciplina selecionarDisciplina() {
         System.out.println("Escolha a disciplina: ");
-        listarDisciplinas();
-        String id = scanner.nextLine();
-        System.out.println("id: " + id);
-        Disciplina disciplina = disciplinaController.getDisciplinaById(id);
+        List<Disciplina> disciplinas = listarDisciplinas();
+        int id = scanner.nextInt();
+        Disciplina disciplina = disciplinas.get(id - 1);
         return disciplina;
     }
 

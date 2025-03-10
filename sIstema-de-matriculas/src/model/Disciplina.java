@@ -6,8 +6,8 @@ public class Disciplina implements Serializable {
     private String nome;
     private String id;
     private String professor;
-    private final int MAX_ALUNOS = 60;
-    private final int MIN_ALUNOS = 3;
+    public static final int MAX_ALUNOS = 60;
+    public static final int MIN_ALUNOS = 3;
 
     public Disciplina() {
     }
@@ -24,6 +24,14 @@ public class Disciplina implements Serializable {
 
     public String getId() {
         return id;
+    }
+
+    public boolean equals(Object obj) {
+        if (obj instanceof Disciplina) {
+            Disciplina disciplina = (Disciplina) obj;
+            return disciplina.getId().equals(this.getId());
+        }
+        return false;
     }
 
     public String toString() {

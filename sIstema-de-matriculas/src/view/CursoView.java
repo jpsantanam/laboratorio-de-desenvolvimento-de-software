@@ -1,10 +1,9 @@
 package view;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import controller.CursoController;
-import model.Aluno;
 import model.Curso;
 import model.Disciplina;
 
@@ -26,16 +25,18 @@ public class CursoView {
         cursoController.addCurso(nome, creditos);
     }
 
-    public void listarCursos() {
+    public List<Curso> listarCursos() {
         System.out.println("Cursos: ");
-        cursoController.getCursos().forEach(curso -> System.out.println(curso));
+        List<Curso> cursos = cursoController.getCursos();
+        cursos.forEach(curso -> System.out.println(cursos.indexOf(curso) + 1 + " - " + curso));
+        return cursos;
     }
 
     public Curso selecionarCurso() {
         System.out.println("Escolha o curso: ");
-        listarCursos();
-        String id = scanner.nextLine();
-        return cursoController.selecionarCurso(id);
+        List<Curso> curso = listarCursos();
+        int id = scanner.nextInt();
+        return curso.get(id - 1);
     }
 
     public void addDisciplina() {

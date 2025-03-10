@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Aluno;
+import model.Disciplina;
 import model.Matricula;
 
 public class MatriculasDao extends AbstractDao implements Serializable {
@@ -47,10 +49,33 @@ public class MatriculasDao extends AbstractDao implements Serializable {
         grava();
     }
 
+    public List<Matricula> getMatriculaByAluno(Aluno aluno) {
+        return matriculas.stream()
+                .filter(matricula -> matricula.getAluno().equals(aluno))
+                .toList();
+    }
+
+    public List<Matricula> getMatriculasByDisciplina(Disciplina disciplina) {
+        return matriculas.stream()
+                .filter(matricula -> matricula.getDisciplina().equals(disciplina))
+                .toList();
+    }
+
+    public void excluirMatriculaById(int id) {
+        matriculas.removeIf(matricula -> matricula.getId().equals(id));
+        grava();
+    }
+
+    public boolean hasMatricula(Aluno aluno, Disciplina disciplina) {
+        return matriculas.stream()
+                .anyMatch(matricula -> matricula.getAluno().equals(aluno)
+                        && matricula.getDisciplina().equals(disciplina));
+    }
+
     // public Matricula buscarMatriculaPorNome(String nome) {
-    //     return matriculas.stream()
-    //             .filter(matricula -> matricula.getNome().equals(nome))
-    //             .findFirst()
-    //             .orElse(null);
+    // return matriculas.stream()
+    // .filter(matricula -> matricula.getNome().equals(nome))
+    // .findFirst()
+    // .orElse(null);
     // }
 }
