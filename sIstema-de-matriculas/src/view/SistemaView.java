@@ -20,20 +20,20 @@ public class SistemaView {
     }
 
     public void menu() {
-        System.out.println("\nBem-vindo ao sistema de matrículas");
-        System.out.println("1 - Aluno");
-        System.out.println("2 - Professor");
-        System.out.println("3 - Usuário da secretaria");
-        System.out.println("4 - Sair");
+        System.out.println("\nBem-vindo ao sistema de matrículas\n");
+        System.out.println("1 - Usuário da secretaria");
+        System.out.println("2 - Aluno");
+        System.out.println("3 - Professor");
+        System.out.println("4 - Sair\n");
         System.out.print("Digite o tipo de usuário: ");
 
         int tipoUsuario = scanner.nextInt();
 
         switch (tipoUsuario) {
             case 1:
-                Aluno aluno = alunoView.login();
-                if (aluno != null) {
-                    alunoView.menu(aluno);
+                UsuarioSecretaria usuarioSecretaria = usuarioSecretariaView.login();
+                if (usuarioSecretaria != null) {
+                    usuarioSecretariaView.menu();
                 }
                 break;
             case 2:
@@ -43,13 +43,14 @@ public class SistemaView {
                 }
                 break;
             case 3:
-                UsuarioSecretaria usuarioSecretaria = usuarioSecretariaView.login();
-                if (usuarioSecretaria != null) {
-                    usuarioSecretariaView.menu();
+                Aluno aluno = alunoView.login();
+                if (aluno != null) {
+                    alunoView.menu(aluno);
                 }
                 break;
             case 4:
-                System.out.println("Saindo...");
+                System.out.println("Sistema encerrado");
+                System.exit(0);
                 break;
             default:
                 System.out.println("Opção inválida");

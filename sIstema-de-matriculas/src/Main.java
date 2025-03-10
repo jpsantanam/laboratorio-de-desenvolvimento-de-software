@@ -10,7 +10,6 @@ import dao.DisciplinasDao;
 import dao.MatriculasDao;
 import dao.ProfessoresDao;
 import dao.UsuariosSecretariaDao;
-import model.Professor;
 import view.AlunoView;
 import view.CursoView;
 import view.DisciplinaView;
@@ -23,9 +22,13 @@ public class Main {
         MatriculasDao matriculasDao = MatriculasDao.getInstance();
         MatriculaController matriculaController = new MatriculaController(matriculasDao);
 
+        ProfessoresDao professoresDao = ProfessoresDao.getInstance();
+        ProfessorController professorController = new ProfessorController(professoresDao);
+        ProfessorView professorView = new ProfessorView(professorController);
+
         DisciplinasDao disciplinaDao = DisciplinasDao.getInstance();
         DisciplinaController disciplinaController = new DisciplinaController(disciplinaDao, matriculaController);
-        DisciplinaView disciplinaView = new DisciplinaView(disciplinaController);
+        DisciplinaView disciplinaView = new DisciplinaView(disciplinaController, professorView);
 
         CursosDao cursosDao = CursosDao.getInstance();
         CursoController cursoController = new CursoController(cursosDao);
@@ -35,18 +38,18 @@ public class Main {
         AlunoController alunoController = new AlunoController(alunosDao);
         AlunoView alunoView = new AlunoView(alunoController, cursoView, disciplinaController, matriculaController);
 
-        ProfessoresDao professoresDao = ProfessoresDao.getInstance();
-        ProfessorController professorController = new ProfessorController(professoresDao);
-        ProfessorView professorView = new ProfessorView(professorController);
-
         UsuariosSecretariaDao usuariosSecretariaDao = UsuariosSecretariaDao.getInstance();
-        UsuarioSecretariaController usuarioSecretariaController = new UsuarioSecretariaController(usuariosSecretariaDao);
-        UsuarioSecretariaView usuarioSecretariaView = new UsuarioSecretariaView(usuarioSecretariaController, alunoView, professorView, disciplinaView, cursoView);
+        UsuarioSecretariaController usuarioSecretariaController = new UsuarioSecretariaController(
+                usuariosSecretariaDao);
+        UsuarioSecretariaView usuarioSecretariaView = new UsuarioSecretariaView(usuarioSecretariaController, alunoView,
+                professorView, disciplinaView, cursoView);
 
         SistemaView sistemaView = new SistemaView(alunoView, professorView, usuarioSecretariaView);
 
         usuarioSecretariaView.addDefaultUser();
-    
-        sistemaView.menu();
+
+        while (true) {
+            sistemaView.menu();
+        }
     }
 }

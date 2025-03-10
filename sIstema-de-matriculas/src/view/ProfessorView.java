@@ -15,22 +15,31 @@ public class ProfessorView {
     }
 
     public void addProfessor() {
-        System.out.println("Digite o nome do professor: ");
+        System.out.print("\nDigite o nome do professor: ");
         String nome = scanner.nextLine();
-        System.out.println("Digite o email do professor: ");
+        System.out.print("Digite o email do professor: ");
         String email = scanner.nextLine();
-        System.out.println("Digite a senha do professor: ");
+        System.out.print("Digite a senha do professor: ");
         String senha = scanner.nextLine();
         professorController.addProfessor(nome, email, senha);
     }
 
     public void listarProfessores() {
+        System.out.println("\nProfessores: ");
         List<Professor> professores = professorController.getProfessores();
         professores.forEach(professor -> System.out.println(professores.indexOf(professor) + 1 + " - " + professor));
     }
 
+    public Professor selecionarProfessor() {
+        List<Professor> professores = professorController.getProfessores();
+        System.out.println("Escolha o professor: ");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+        return professores.get(id - 1);
+    }
+
     public Professor login() {
-        System.out.print("Digite o email do professor: ");
+        System.out.print("\nDigite o email do professor: ");
         String email = scanner.nextLine();
         System.out.print("Digite a senha do professor: ");
         String senha = scanner.nextLine();
@@ -46,9 +55,12 @@ public class ProfessorView {
     public void menu() {
         int opcao = 0;
         while (opcao != 3) {
+            System.out.println("\nMenu de professores\n");
             System.out.println("1 - Adicionar professor");
             System.out.println("2 - Listar professores");
-            System.out.println("3 - Sair");
+            System.out.println("3 - Sair\n");
+            System.out.print("Digite a opção desejada: ");
+
             opcao = scanner.nextInt();
             scanner.nextLine();
             switch (opcao) {
@@ -59,7 +71,7 @@ public class ProfessorView {
                     listarProfessores();
                     break;
                 case 3:
-                    System.out.println("Saindo...");
+                    System.out.println("Sistema encerrado");
                     break;
                 default:
                     System.out.println("Opção inválida");

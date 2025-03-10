@@ -5,14 +5,14 @@ import java.io.Serializable;
 public class Disciplina implements Serializable {
     private String nome;
     private String id;
-    private String professor;
+    private Professor professor;
     public static final int MAX_ALUNOS = 60;
     public static final int MIN_ALUNOS = 3;
 
     public Disciplina() {
     }
 
-    public Disciplina(String nome, String id, String professor) {
+    public Disciplina(String nome, String id, Professor professor) {
         this.nome = nome;
         this.id = id;
         this.professor = professor;

@@ -7,6 +7,7 @@ import java.util.UUID;
 import dao.DisciplinasDao;
 import model.Disciplina;
 import model.Matricula;
+import model.Professor;
 
 public class DisciplinaController {
     private DisciplinasDao disciplinasDao;
@@ -17,7 +18,7 @@ public class DisciplinaController {
         this.matriculaController = matriculaController;
     }
 
-    public void addDisciplina(String nome, String professor) {
+    public void addDisciplina(String nome, Professor professor) {
         String id = UUID.randomUUID().toString();
         disciplinasDao.addDisciplina(new Disciplina(nome, id, professor));
     }

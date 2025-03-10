@@ -23,7 +23,7 @@ public class UsuarioSecretariaView {
     }
 
     public void addUsuarioSecretaria() {
-        System.out.println("Digite o nome do usuário: ");
+        System.out.println("\nDigite o nome do usuário: ");
         String nome = scanner.nextLine();
         System.out.println("Digite o email do usuário: ");
         String email = scanner.nextLine();
@@ -40,7 +40,7 @@ public class UsuarioSecretariaView {
     }
 
     public UsuarioSecretaria login() {
-        System.out.print("Digite o email do usuário: ");
+        System.out.print("\nDigite o email do usuário: ");
         String email = scanner.nextLine();
         System.out.print("Digite a senha do usuário: ");
         String senha = scanner.nextLine();
@@ -58,13 +58,13 @@ public class UsuarioSecretariaView {
     }
 
     public void menu() {
-        System.out.println("\nMenu do usuário da secretaria");
+        System.out.println("\nMenu do usuário da secretaria\n");
         System.out.println("1 - Aluno");
         System.out.println("2 - Professor");
         System.out.println("3 - Disciplina");
         System.out.println("4 - Curso");
         System.out.println("5 - Encerrar período de matrículas");
-        System.out.println("6 - Sair");
+        System.out.println("6 - Sair\n");
         System.out.print("Digite a opção desejada: ");
 
         int opcao = scanner.nextInt();
@@ -86,7 +86,7 @@ public class UsuarioSecretariaView {
                 encerrarMatriculas();
                 break;
             case 6:
-                System.out.println("Saindo...");
+                System.out.println("Sistema encerrado");
                 break;
             default:
                 System.out.println("Opção inválida");

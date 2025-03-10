@@ -29,7 +29,7 @@ public class AlunoView {
     private Scanner scanner = new Scanner(System.in);
 
     public void addAluno() {
-        System.out.println("Digite o nome do aluno: ");
+        System.out.println("\nDigite o nome do aluno: ");
         String nome = scanner.nextLine();
         System.out.println("Digite o email do aluno: ");
         String email = scanner.nextLine();
@@ -47,11 +47,11 @@ public class AlunoView {
 
     public void escolherDisciplina(Aluno aluno, TipoMatricula tipo) {
         if (matriculaController.getMatriculaByAlunoAndTipo(aluno, tipo).size() >= tipo.getMaxMatriculas()) {
-            System.out.println("Aluno já matriculado no máximo de disciplinas do tipo " + tipo);
+            System.out.println("\nAluno já matriculado no máximo de disciplinas do tipo " + tipo);
             return;
         }
 
-        System.out.println("Escolha a disciplina: ");
+        System.out.println("\nEscolha a disciplina: ");
 
         List<Disciplina> disciplinas = disciplinaController.getDisciplinas().stream()
                 .filter(disciplina -> !disciplinaController.isFull(disciplina)).toList();
@@ -68,7 +68,7 @@ public class AlunoView {
     }
 
     public Aluno login() {
-        System.out.println("Digite o email do aluno: ");
+        System.out.println("\nDigite o email do aluno: ");
         String email = scanner.nextLine();
         System.out.println("Digite a senha do aluno: ");
         String senha = scanner.nextLine();
@@ -76,7 +76,7 @@ public class AlunoView {
         if (aluno != null) {
             return aluno;
         } else {
-            System.out.println("Email ou senha inválidos");
+            System.out.println("\nEmail ou senha inválidos");
             return null;
         }
     }
@@ -89,7 +89,7 @@ public class AlunoView {
     }
 
     public List<Matricula> visualizarMatriculas(Aluno aluno) {
-        System.out.println("Matrículas do aluno: ");
+        System.out.println("\nMatrículas do aluno: ");
         List<Matricula> matriculas = matriculaController.getMatriculaByAluno(aluno);
         matriculas.forEach(matricula -> System.out.println(matriculas.indexOf(matricula) + 1 + " - " + matricula));
         return matriculas;
@@ -98,12 +98,13 @@ public class AlunoView {
     public void menu(Aluno aluno) {
         int opcao = 0;
         while (opcao != 5) {
-            System.out.println("Menu do aluno");
+            System.out.println("\nMenu do aluno\n");
             System.out.println("1 - Escolher disciplina obrigatória");
             System.out.println("2 - Escolher disciplina optativa");
             System.out.println("3 - Cancelar matrícula");
             System.out.println("4 - Visualizar matrículas");
             System.out.println("5 - Sair\n");
+            System.out.print("Digite a opção desejada: ");
             opcao = scanner.nextInt();
             scanner.nextLine();
             switch (opcao) {
@@ -120,7 +121,7 @@ public class AlunoView {
                     visualizarMatriculas(aluno);
                     break;
                 case 5:
-                    System.out.println("Saindo...");
+                    System.out.println("Sistema encerrado");
                     break;
                 default:
                     System.out.println("Opção inválida");
@@ -129,10 +130,11 @@ public class AlunoView {
     }
 
     public void menu() {
-        System.out.println("Menu do aluno");
+        System.out.println("\nMenu do aluno\n");
         System.out.println("1 - Adicionar aluno");
         System.out.println("2 - Listar alunos");
         System.out.println("3 - Sair\n");
+        System.out.print("Digite a opção desejada: ");
         int opcao = scanner.nextInt();
         scanner.nextLine();
         switch (opcao) {
@@ -143,7 +145,7 @@ public class AlunoView {
                 listarAlunos();
                 break;
             case 3:
-                System.out.println("Saindo...");
+                System.out.println("Sistema encerrado");
                 break;
             default:
                 System.out.println("Opção inválida");
