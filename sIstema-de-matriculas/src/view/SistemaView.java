@@ -27,33 +27,33 @@ public class SistemaView {
         System.out.println("4 - Sair\n");
         System.out.print("Digite o tipo de usuário: ");
 
-        int tipoUsuario = scanner.nextInt();
+        String tipoUsuario = scanner.nextLine();
 
         switch (tipoUsuario) {
-            case 1:
+            case "1":
                 UsuarioSecretaria usuarioSecretaria = usuarioSecretariaView.login();
                 if (usuarioSecretaria != null) {
                     usuarioSecretariaView.menu();
                 }
                 break;
-            case 2:
+            case "2":
                 Professor professor = professorView.login();
                 if (professor != null) {
                     // professorView.menu(professor);
                 }
                 break;
-            case 3:
+            case "3":
                 Aluno aluno = alunoView.login();
                 if (aluno != null) {
                     alunoView.menu(aluno);
                 }
                 break;
-            case 4:
-                System.out.println("Sistema encerrado");
+            case "4":
+                System.out.println("\nSistema encerrado");
                 System.exit(0);
                 break;
             default:
-                System.out.println("Opção inválida");
+                System.out.println("\nOpção inválida");
                 break;
         }
     }

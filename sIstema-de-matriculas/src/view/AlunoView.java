@@ -96,8 +96,8 @@ public class AlunoView {
     }
 
     public void menu(Aluno aluno) {
-        int opcao = 0;
-        while (opcao != 5) {
+        String opcao = "0";
+        while (opcao != "5") {
             System.out.println("\nMenu do aluno\n");
             System.out.println("1 - Escolher disciplina obrigatória");
             System.out.println("2 - Escolher disciplina optativa");
@@ -105,23 +105,24 @@ public class AlunoView {
             System.out.println("4 - Visualizar matrículas");
             System.out.println("5 - Sair\n");
             System.out.print("Digite a opção desejada: ");
-            opcao = scanner.nextInt();
-            scanner.nextLine();
+
+            opcao = scanner.nextLine();
+
             switch (opcao) {
-                case 1:
+                case "1":
                     escolherDisciplina(aluno, TipoMatricula.OBRIGATORIA);
                     break;
-                case 2:
+                case "2":
                     escolherDisciplina(aluno, TipoMatricula.OPTATIVA);
                     break;
-                case 3:
+                case "3":
                     cancelarMatricula(aluno);
                     break;
-                case 4:
+                case "4":
                     visualizarMatriculas(aluno);
                     break;
-                case 5:
-                    System.out.println("Sistema encerrado");
+                case "5":
+                    System.out.println("\nSistema encerrado");
                     break;
                 default:
                     System.out.println("Opção inválida");
@@ -135,17 +136,18 @@ public class AlunoView {
         System.out.println("2 - Listar alunos");
         System.out.println("3 - Sair\n");
         System.out.print("Digite a opção desejada: ");
-        int opcao = scanner.nextInt();
-        scanner.nextLine();
+
+        String opcao = scanner.nextLine();
+
         switch (opcao) {
-            case 1:
+            case "1":
                 addAluno();
                 break;
-            case 2:
+            case "2":
                 listarAlunos();
                 break;
-            case 3:
-                System.out.println("Sistema encerrado");
+            case "3":
+                System.out.println("\nSistema encerrado");
                 break;
             default:
                 System.out.println("Opção inválida");

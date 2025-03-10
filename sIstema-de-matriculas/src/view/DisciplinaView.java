@@ -52,24 +52,25 @@ public class DisciplinaView {
     }
 
     public void menu() {
-        int opcao = 0;
-        while (opcao != 3) {
+        String opcao = "0";
+        while (opcao != "3") {
             System.out.println("\nMenu de disciplinas\n");
             System.out.println("1 - Adicionar disciplina");
             System.out.println("2 - Listar disciplinas");
             System.out.println("3 - Sair\n");
             System.out.print("Digite a opção desejada: ");
-            opcao = scanner.nextInt();
-            scanner.nextLine();
+
+            opcao = scanner.nextLine();
+
             switch (opcao) {
-                case 1:
+                case "1":
                     addDisciplina();
                     break;
-                case 2:
+                case "2":
                     listarDisciplinas();
                     break;
-                case 3:
-                    System.out.println("Sistema encerrado");
+                case "3":
+                    System.out.println("\nSistema encerrado");
                     break;
                 default:
                     System.out.println("Opção inválida");

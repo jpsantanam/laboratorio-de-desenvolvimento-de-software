@@ -48,7 +48,7 @@ public class UsuarioSecretariaView {
         if (usuario != null) {
             return usuario;
         } else {
-            System.out.println("Usuário ou senha inválidos!");
+            System.out.println("\nUsuário ou senha inválidos!");
             return null;
         }
     }
@@ -67,26 +67,26 @@ public class UsuarioSecretariaView {
         System.out.println("6 - Sair\n");
         System.out.print("Digite a opção desejada: ");
 
-        int opcao = scanner.nextInt();
+        String opcao = scanner.nextLine();
 
         switch (opcao) {
-            case 1:
+            case "1":
                 alunoView.menu();
                 break;
-            case 2:
+            case "2":
                 professorView.menu();
                 break;
-            case 3:
+            case "3":
                 disciplinaView.menu();
                 break;
-            case 4:
+            case "4":
                 cursoView.menu();
                 break;
-            case 5:
+            case "5":
                 encerrarMatriculas();
                 break;
-            case 6:
-                System.out.println("Sistema encerrado");
+            case "6":
+                System.out.println("\nSistema encerrado");
                 break;
             default:
                 System.out.println("Opção inválida");

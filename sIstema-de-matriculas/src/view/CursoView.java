@@ -46,28 +46,28 @@ public class CursoView {
     }
 
     public void menu() {
-        int opcao = 0;
-        while (opcao != 4) {
+        String opcao = "0";
+        while (opcao != "4") {
             System.out.println("\nMenu de cursos\n");
             System.out.println("1 - Adicionar curso");
             System.out.println("2 - Listar cursos");
             System.out.println("3 - Adicionar disciplina a um curso");
             System.out.println("4 - Sair\n");
             System.out.print("Digite a opção desejada: ");
-            opcao = scanner.nextInt();
-            scanner.nextLine();
+            opcao = scanner.nextLine();
+
             switch (opcao) {
-                case 1:
+                case "1":
                     addCurso();
                     break;
-                case 2:
+                case "2":
                     listarCursos();
                     break;
-                case 3:
+                case "3":
                     addDisciplina();
                     break;
-                case 4:
-                    System.out.println("Sistema encerrado");
+                case "4":
+                    System.out.println("\nSistema encerrado");
                     break;
                 default:
                     System.out.println("Opção inválida");

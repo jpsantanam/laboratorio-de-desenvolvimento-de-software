@@ -34,7 +34,6 @@ public class ProfessorView {
         List<Professor> professores = professorController.getProfessores();
         System.out.println("Escolha o professor: ");
         int id = scanner.nextInt();
-        scanner.nextLine();
         return professores.get(id - 1);
     }
 
@@ -53,25 +52,25 @@ public class ProfessorView {
     }
 
     public void menu() {
-        int opcao = 0;
-        while (opcao != 3) {
+        String opcao = "0";
+        while (opcao != "3") {
             System.out.println("\nMenu de professores\n");
             System.out.println("1 - Adicionar professor");
             System.out.println("2 - Listar professores");
             System.out.println("3 - Sair\n");
             System.out.print("Digite a opção desejada: ");
 
-            opcao = scanner.nextInt();
-            scanner.nextLine();
+            opcao = scanner.nextLine();
+
             switch (opcao) {
-                case 1:
+                case "1":
                     addProfessor();
                     break;
-                case 2:
+                case "2":
                     listarProfessores();
                     break;
-                case 3:
-                    System.out.println("Sistema encerrado");
+                case "3":
+                    System.out.println("\nSistema encerrado");
                     break;
                 default:
                     System.out.println("Opção inválida");
