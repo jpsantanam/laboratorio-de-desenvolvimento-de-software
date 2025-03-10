@@ -21,10 +21,10 @@ import view.UsuarioSecretariaView;
 public class Main {
     public static void main(String[] args) {
         MatriculasDao matriculasDao = MatriculasDao.getInstance();
-        MatriculaController matriculasController = new MatriculaController(matriculasDao);
+        MatriculaController matriculaController = new MatriculaController(matriculasDao);
 
         DisciplinasDao disciplinaDao = DisciplinasDao.getInstance();
-        DisciplinaController disciplinaController = new DisciplinaController(disciplinaDao);
+        DisciplinaController disciplinaController = new DisciplinaController(disciplinaDao, matriculaController);
         DisciplinaView disciplinaView = new DisciplinaView(disciplinaController);
 
         CursosDao cursosDao = CursosDao.getInstance();
@@ -33,7 +33,7 @@ public class Main {
 
         AlunosDao alunosDao = AlunosDao.getInstance();
         AlunoController alunoController = new AlunoController(alunosDao);
-        AlunoView alunoView = new AlunoView(alunoController, cursoView, disciplinaController, matriculasController);
+        AlunoView alunoView = new AlunoView(alunoController, cursoView, disciplinaController, matriculaController);
 
         ProfessoresDao professoresDao = ProfessoresDao.getInstance();
         ProfessorController professorController = new ProfessorController(professoresDao);

@@ -35,6 +35,6 @@ public class Disciplina implements Serializable {
     }
 
     public String toString() {
-        return "Nome: " + nome + "\nCódigo: " + id + "\nProfessor: " + professor;
+        return "Nome: " + nome + "\nProfessor: " + professor;
     }
 }

@@ -1,7 +1,6 @@
 package model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 public class Professor implements Serializable {
     private String nome;
@@ -23,7 +22,19 @@ public class Professor implements Serializable {
         return nome;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
     public String toString() {
-        return "Nome: " + nome + "\nID: " + id + "\nE-mail: " + email;
+        return "Nome: " + nome + "\nE-mail: " + email;
     }
 }

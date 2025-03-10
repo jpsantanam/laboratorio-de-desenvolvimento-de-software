@@ -50,6 +50,6 @@ public class Aluno implements Serializable {
 
     public String toString() {
         return "Nome: " + nome + "\nNúmero de Matrícula: " + numeroMatricula + "\nE-mail: " + email + "\nCurso: "
-                + curso;
+                + curso.getNome();
     }
 }

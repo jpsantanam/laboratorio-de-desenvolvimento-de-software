@@ -64,6 +64,8 @@ public class CursoView {
                 case 3:
                     addDisciplina();
                     break;
+                case 4:
+                    break;
                 default:
                     System.out.println("Opção inválida");
                     break;

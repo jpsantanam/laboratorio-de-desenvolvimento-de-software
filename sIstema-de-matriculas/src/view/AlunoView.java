@@ -10,6 +10,7 @@ import model.Aluno;
 import model.Curso;
 import model.Disciplina;
 import model.Matricula;
+import model.TipoMatricula;
 
 public class AlunoView {
     private AlunoController alunoController;
@@ -44,15 +45,23 @@ public class AlunoView {
         return alunos;
     }
 
-    public void escolherDisciplina(Aluno aluno) {
+    public void escolherDisciplina(Aluno aluno, TipoMatricula tipo) {
+        if (matriculaController.getMatriculaByAlunoAndTipo(aluno, tipo).size() >= tipo.getMaxMatriculas()) {
+            System.out.println("Aluno já matriculado no máximo de disciplinas do tipo " + tipo);
+            return;
+        }
+
         System.out.println("Escolha a disciplina: ");
+
         List<Disciplina> disciplinas = disciplinaController.getDisciplinas().stream()
                 .filter(disciplina -> !disciplinaController.isFull(disciplina)).toList();
         disciplinas.forEach(disciplina -> System.out.println(disciplinas.indexOf(disciplina) + 1 + " - " + disciplina));
+
         int id = scanner.nextInt();
         Disciplina disciplina = disciplinas.get(id - 1);
+
         try {
-            matriculaController.addMatricula(aluno, disciplina);
+            matriculaController.addMatricula(aluno, disciplina, tipo);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -88,25 +97,29 @@ public class AlunoView {
 
     public void menu(Aluno aluno) {
         int opcao = 0;
-        while (opcao != 4) {
+        while (opcao != 5) {
             System.out.println("Menu do aluno");
-            System.out.println("1 - Escolher disciplina");
-            System.out.println("2 - Cancelar matrícula");
-            System.out.println("3 - Visualizar matrículas");
-            System.out.println("4 - Sair\n");
+            System.out.println("1 - Escolher disciplina obrigatória");
+            System.out.println("2 - Escolher disciplina optativa");
+            System.out.println("3 - Cancelar matrícula");
+            System.out.println("4 - Visualizar matrículas");
+            System.out.println("5 - Sair\n");
             opcao = scanner.nextInt();
             scanner.nextLine();
             switch (opcao) {
                 case 1:
-                    escolherDisciplina(aluno);
+                    escolherDisciplina(aluno, TipoMatricula.OBRIGATORIA);
                     break;
                 case 2:
-                    cancelarMatricula(aluno);
+                    escolherDisciplina(aluno, TipoMatricula.OPTATIVA);
                     break;
                 case 3:
-                    visualizarMatriculas(aluno);
+                    cancelarMatricula(aluno);
                     break;
                 case 4:
+                    visualizarMatriculas(aluno);
+                    break;
+                case 5:
                     System.out.println("Saindo...");
                     break;
                 default:

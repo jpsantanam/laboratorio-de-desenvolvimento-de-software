@@ -11,8 +11,9 @@ public class DisciplinaController {
     private DisciplinasDao disciplinasDao;
     private MatriculaController matriculaController;
 
-    public DisciplinaController(DisciplinasDao disciplinasDao) {
+    public DisciplinaController(DisciplinasDao disciplinasDao, MatriculaController matriculaController) {
         this.disciplinasDao = disciplinasDao;
+        this.matriculaController = matriculaController;
     }
 
     public void addDisciplina(String nome, String professor) {
