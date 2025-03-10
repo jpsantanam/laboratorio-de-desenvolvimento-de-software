@@ -71,11 +71,4 @@ public class MatriculasDao extends AbstractDao implements Serializable {
                 .anyMatch(matricula -> matricula.getAluno().equals(aluno)
                         && matricula.getDisciplina().equals(disciplina));
     }
-
-    // public Matricula buscarMatriculaPorNome(String nome) {
-    // return matriculas.stream()
-    // .filter(matricula -> matricula.getNome().equals(nome))
-    // .findFirst()
-    // .orElse(null);
-    // }
 }

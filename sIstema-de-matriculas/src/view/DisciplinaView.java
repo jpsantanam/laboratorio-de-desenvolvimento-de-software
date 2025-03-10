@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import controller.DisciplinaController;
 import model.Disciplina;
+import model.Matricula;
 
 public class DisciplinaView {
     private Scanner scanner = new Scanner(System.in);
@@ -35,6 +36,17 @@ public class DisciplinaView {
         int id = scanner.nextInt();
         Disciplina disciplina = disciplinas.get(id - 1);
         return disciplina;
+    }
+
+    public void encerrarMatriculas() {
+        List<Matricula> matriculasCanceladas = disciplinaController.cancelarDisciplinas();
+        if (matriculasCanceladas.isEmpty()) {
+            System.out.println("Nenhuma matrícula foi cancelada");
+            return;
+        } else {
+            System.out.println("Matrículas canceladas: ");
+            matriculasCanceladas.forEach(matricula -> System.out.println(matricula));
+        }
     }
 
     public void menu() {

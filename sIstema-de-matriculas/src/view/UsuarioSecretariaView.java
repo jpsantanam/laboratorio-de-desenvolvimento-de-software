@@ -53,13 +53,18 @@ public class UsuarioSecretariaView {
         }
     }
 
+    public void encerrarMatriculas() {
+        disciplinaView.encerrarMatriculas();
+    }
+
     public void menu() {
         System.out.println("\nMenu do usuário da secretaria");
         System.out.println("1 - Aluno");
         System.out.println("2 - Professor");
         System.out.println("3 - Disciplina");
         System.out.println("4 - Curso");
-        System.out.println("5 - Sair");
+        System.out.println("5 - Encerrar período de matrículas");
+        System.out.println("6 - Sair");
         System.out.print("Digite a opção desejada: ");
 
         int opcao = scanner.nextInt();
@@ -69,7 +74,7 @@ public class UsuarioSecretariaView {
                 alunoView.menu();
                 break;
             case 2:
-                // professorView.menu();
+                professorView.menu();
                 break;
             case 3:
                 disciplinaView.menu();
@@ -78,6 +83,9 @@ public class UsuarioSecretariaView {
                 cursoView.menu();
                 break;
             case 5:
+                encerrarMatriculas();
+                break;
+            case 6:
                 System.out.println("Saindo...");
                 break;
             default:

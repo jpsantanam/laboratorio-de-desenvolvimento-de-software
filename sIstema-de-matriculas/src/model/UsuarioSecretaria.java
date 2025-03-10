@@ -29,4 +29,8 @@ public class UsuarioSecretaria implements Serializable {
     public String getSenha() {
         return senha;
     }
+
+    public String getId() {
+        return id;
+    }
 }

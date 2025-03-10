@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -32,5 +33,20 @@ public class DisciplinaController {
 
     public List<Disciplina> getDisciplinas() {
         return disciplinasDao.getDisciplinas();
+    }
+
+    public List<Matricula> cancelarDisciplinas() {
+        List<Disciplina> disciplinas = getDisciplinas();
+        List<Matricula> matriculasCanceladas = new ArrayList<>();
+        for (Disciplina disciplina : disciplinas) {
+            List<Matricula> matriculas = matriculaController.getMatriculasByDisciplina(disciplina);
+            if (matriculas.size() < Disciplina.MIN_ALUNOS) {
+                for (Matricula matricula : matriculas) {
+                    matriculasCanceladas.add(matricula);
+                    matriculaController.excluirMatricula(matricula);
+                }
+            }
+        }
+        return matriculasCanceladas;
     }
 }

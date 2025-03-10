@@ -21,4 +21,11 @@ public class ProfessorController {
     public List<Professor> getProfessores() {
         return professoresDao.getProfessores();
     }
+
+    public Professor login(String email, String senha) {
+        return professoresDao.getProfessores().stream()
+                .filter(professor -> professor.getEmail().equals(email) && professor.getSenha().equals(senha))
+                .findFirst()
+                .orElse(null);
+    }
 }

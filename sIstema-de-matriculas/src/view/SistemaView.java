@@ -3,6 +3,7 @@ package view;
 import java.util.Scanner;
 
 import model.Aluno;
+import model.Professor;
 import model.UsuarioSecretaria;
 
 public class SistemaView {
@@ -36,7 +37,10 @@ public class SistemaView {
                 }
                 break;
             case 2:
-                System.out.println("Coordenador");
+                Professor professor = professorView.login();
+                if (professor != null) {
+                    // professorView.menu(professor);
+                }
                 break;
             case 3:
                 UsuarioSecretaria usuarioSecretaria = usuarioSecretariaView.login();
