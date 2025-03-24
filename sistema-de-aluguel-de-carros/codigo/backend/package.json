@@ -1,0 +1,28 @@
+{
+  "name": "backend-odous",
+  "version": "0.0.1",
+  "description": "Backend Node package - Express + Sequelize",
+  "author": "matheusrocha-mus",
+  "main": "src/server.ts",
+  "scripts": {
+    "start": "nodemon"
+  },
+  "dependencies": {
+    "@sequelize/postgres": "^7.0.0-alpha.43",
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "postgres": "^3.4.5",
+    "sequelize": "^6.37.3",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "nodemon": "^3.1.5",
+    "@types/node": "^22.13.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  }
+}
