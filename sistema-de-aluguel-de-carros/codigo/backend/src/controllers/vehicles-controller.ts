@@ -1,73 +1,73 @@
 import express from 'express';
-import Customer from '../../models/customer';
+import Vehicle from '../models/vehicle';
 
-// Get customer by id
+// Get vehicle by id
 export const getById = async (req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> => {
     try {
         const id = req.params.id;
-        const customer = await Customer.findByPk(id);
+        const vehicle = await Vehicle.findByPk(id);
 
-        if (customer) res.status(200).send(customer);
-        else res.status(404).send('Customer not found!');
+        if (vehicle) res.status(200).send(vehicle);
+        else res.status(404).send('Vehicle not found!');
     } catch (err) {
         next(err);
     }
 };
 
-// Get all customers
+// Get all vehicles
 export const getAll = async (req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> => {
     try {
-        const customers = await Customer.findAll();
+        const vehicles = await Vehicle.findAll();
 
-        res.status(200).send(customers);
+        res.status(200).send(vehicles);
     } catch (err) {
         next(err);
     }
 };
 
-// Create customer
+// Create vehicle
 export const create = async (req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> => {
     try {
-        const reqBody = req.body as Customer;
-        const customer = await Customer.create(reqBody);
+        const reqBody = req.body as Vehicle;
+        const vehicle = await Vehicle.create(reqBody);
 
-        res.status(201).send(customer);
+        res.status(201).send(vehicle);
     } catch (err) {
         next(err);
     }
 };
 
-// Update customer
+// Update vehicle
 export const update = async (req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> => {
     try {
         const id = req.params.id;
-        const reqBody = req.body as Customer;
+        const reqBody = req.body as Vehicle;
 
-        const customer = await Customer.findByPk(id);
+        const vehicle = await Vehicle.findByPk(id);
 
-        if (customer) {
-            await customer.update(reqBody);
-            res.status(200).send(customer);
+        if (vehicle) {
+            await vehicle.update(reqBody);
+            res.status(200).send(vehicle);
         } else {
-            res.status(404).send('Customer not found!');
+            res.status(404).send('Vehicle not found!');
         }
     } catch (err) {
         next(err);
     }
 };
 
-// Delete customer
+// Delete vehicle
 export const deleteById = async (req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> => {
     try {
         const id = req.params.id;
 
-        const customer = await Customer.findByPk(id);
+        const vehicle = await Vehicle.findByPk(id);
 
-        if (customer) {
-            await customer.destroy();
-            res.status(200).send(`Customer with id ${id} deleted successfully!`);
+        if (vehicle) {
+            await vehicle.destroy();
+            res.status(200).send(`Vehicle with id ${id} deleted successfully!`);
         } else {
-            res.status(404).send('Customer not found!');
+            res.status(404).send('Vehicle not found!');
         }
     } catch (err) {
         next(err);
