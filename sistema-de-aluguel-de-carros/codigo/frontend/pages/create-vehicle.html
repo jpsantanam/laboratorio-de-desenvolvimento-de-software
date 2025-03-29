@@ -1,41 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar veículo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <div class="container mt-5">
-        <h2>Criar veículo</h2>
-        <form id="vehicleForm">
-            <div class="mb-3">
-                <label for="model" class="form-label">Modelo</label>
-                <input type="text" class="form-control" id="model" required>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Criar veículo</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#">Locadora de Veículos</a>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="customer.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="rents.html">Meus Aluguéis</a></li>
+                        <li class="nav-item"><a class="nav-link" href="create-vehicle.html">Criar Veículo</a></li>
+                        <li class="nav-item"><a class="nav-link text-danger" href="index.html">Logout</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="brand" class="form-label">Marca</label>
-                <input type="text" class="form-control" id="brand" required>
-            </div>
-            <div class="mb-3">
-                <label for="year" class="form-label">Ano</label>
-                <input type="number" class="form-control" id="year" required>
-            </div>
-            <div class="mb-3">
-                <label for="plate" class="form-label">Placa</label>
-                <input type="text" class="form-control" id="plate" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Criar veículo</button>
-        </form>
+        </nav>
+        <div class="container mt-5">
+            <h2>Criar veículo</h2>
+            <form id="vehicleForm">
+                <div class="mb-3">
+                    <label for="model" class="form-label">Modelo</label>
+                    <input type="text" class="form-control" id="model" required />
+                </div>
+                <div class="mb-3">
+                    <label for="brand" class="form-label">Marca</label>
+                    <input type="text" class="form-control" id="brand" required />
+                </div>
+                <div class="mb-3">
+                    <label for="year" class="form-label">Ano</label>
+                    <input type="number" class="form-control" id="year" required />
+                </div>
+                <div class="mb-3">
+                    <label for="plate" class="form-label">Placa</label>
+                    <input type="text" class="form-control" id="plate" required />
+                </div>
+                <button type="submit" class="btn btn-primary">Criar veículo</button>
+            </form>
 
-        <div id="toastContainer" class="toast-container position-fixed bottom-0 end-0 p-3">
-            <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true"></div>
+            <div id="toastContainer" class="toast-container position-fixed bottom-0 end-0 p-3">
+                <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true"></div>
+            </div>
         </div>
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../scripts/utils.js"></script>
-    <script src="../scripts/create-vehicle.js"></script>
-</body>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="../scripts/utils.js"></script>
+        <script src="../scripts/create-vehicle.js"></script>
+    </body>
 </html>
