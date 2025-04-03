@@ -16,13 +16,14 @@ async function loadVehicles() {
     vehicleList.innerHTML = '';
 
     const customerId = JSON.parse(localStorage.getItem('user')).id;
-    let vehicles = await fetchVehicles();
+    const vehicles = await fetchVehicles();
+    const rents = await fetch('http://localhost:3000/rents').then((response) => response.json());
+
+    console.log(rents);
 
     vehicles.forEach(async (vehicle) => {
-        const response = await fetch(`http://localhost:3000/rents?vehicleId=${vehicle.id}&customerId=${customerId}`);
-        const rent = await response.json();
-
-        const isRentedByCustomer = rent.length > 0;
+        const isRentedByCustomer = rents.some((rent) => rent.vehicleId === vehicle.id && rent.customerId === customerId);
+        const currentRent = rents.find((rent) => rent.vehicleId === vehicle.id && rent.customerId === customerId);
 
         const card = `
                     <div class="col-md-4">
@@ -32,7 +33,7 @@ async function loadVehicles() {
                                 <p class="card-text">Ano: ${vehicle.year}</p>
                                 <p class="card-text">Placa: ${vehicle.plate}</p>
                                 <button class="btn ${isRentedByCustomer ? 'btn-danger' : 'btn-success'} w-100" 
-                                    onclick="${isRentedByCustomer ? `deleteRent(${rent[0].id}, loadVehicles)` : `rentVehicle(${vehicle.id})`}">
+                                    onclick="${isRentedByCustomer ? `deleteRent(${currentRent.id}, loadVehicles)` : `rentVehicle(${vehicle.id})`}">
                                     ${isRentedByCustomer ? 'Cancelar Aluguel' : 'Alugar'}
                                 </button>
                             </div>

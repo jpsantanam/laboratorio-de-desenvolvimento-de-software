@@ -8,10 +8,7 @@ async function loadRents() {
         .then((response) => response.json())
         .then((data) => {
             const rentalsTableBody = document.getElementById('rentalsTableBody');
-            if (data.Rents.length === 0) {
-                rentalsTableBody.innerHTML = ''; // Limpa o conteúdo atual da tabela
-                return;
-            }
+            rentalsTableBody.innerHTML = ''; // Limpa o conteúdo atual da tabela
             data.Rents.forEach((rent) => {
                 const row = `<tr>
                 <td>${rent.id}</td>
