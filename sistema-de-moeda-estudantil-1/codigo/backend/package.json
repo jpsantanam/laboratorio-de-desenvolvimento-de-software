@@ -1,0 +1,24 @@
+{
+  "name": "backend",
+  "version": "0.0.1",
+  "description": "Backend Node package - Express + Sequelize",
+  "author": "matheusrocha-mus",
+  "main": "src/server.ts",
+  "scripts": {
+    "start": "nodemon"
+  },
+  "dependencies": {
+    "@sequelize/core": "^7.0.0-alpha.42",
+    "@sequelize/sqlite3": "^7.0.0-alpha.46",
+    "cors": "^2.8.5",
+    "express": "^4.21.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.9",
+    "nodemon": "^3.1.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  }
+}
