@@ -69,6 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (response.ok) {
                 showToast('Cadastro realizado com sucesso!', true);
+                localStorage.setItem(singularize(userType.value), JSON.stringify(await response.json()));
                 window.location.href = `${singularize(userType.value)}.html`;
             } else showToast('Erro ao cadastrar usuário. Verifique os dados.', false);
         } catch (error) {
