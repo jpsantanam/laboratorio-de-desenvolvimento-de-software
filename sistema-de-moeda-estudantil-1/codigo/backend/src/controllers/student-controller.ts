@@ -1,7 +1,7 @@
 import express from 'express';
 import Student from '../models/student';
+import Transaction from '../models/transaction';
 
-// Get student by id
 export const getById = async (req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> => {
     try {
         const id = req.params.id;
@@ -14,7 +14,6 @@ export const getById = async (req: express.Request, res: express.Response, next:
     }
 };
 
-// Get all students
 export const getAll = async (req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> => {
     try {
         const students = await Student.findAll();
@@ -25,7 +24,6 @@ export const getAll = async (req: express.Request, res: express.Response, next: 
     }
 };
 
-// Create student
 export const create = async (req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> => {
     try {
         const reqBody = req.body as Student;
@@ -37,7 +35,6 @@ export const create = async (req: express.Request, res: express.Response, next: 
     }
 };
 
-// Update student
 export const update = async (req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> => {
     try {
         const id = req.params.id;
@@ -54,7 +51,6 @@ export const update = async (req: express.Request, res: express.Response, next: 
     }
 };
 
-// Delete student
 export const deleteById = async (req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> => {
     try {
         const id = req.params.id;
@@ -70,7 +66,6 @@ export const deleteById = async (req: express.Request, res: express.Response, ne
     }
 };
 
-// Login student
 export const login = async (req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> => {
     try {
         const { email, password } = req.body;
@@ -81,6 +76,29 @@ export const login = async (req: express.Request, res: express.Response, next: e
             if (isPasswordValid) res.status(200).send(student);
             else res.status(401).send('Invalid password!');
         } else res.status(404).send('Student not found!');
+    } catch (err) {
+        next(err);
+    }
+};
+
+export const getExtratoAluno = async (req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> => {
+    try {
+        const { idAluno } = req.params;
+
+        const student = await Student.findByPk(idAluno);
+        if (!student) {
+            res.status(404).send('Student not found.');
+            return;
+        }
+
+        const transacoes = await Transaction.findAll({
+            where: {
+                idDestinatario: idAluno,
+                tipoDestinatario: 'Student'
+            },
+            order: [['dataHora', 'DESC']]
+        });
+        res.status(200).send({ balance: student.balance, transacoes });
     } catch (err) {
         next(err);
     }
