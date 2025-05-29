@@ -11,12 +11,14 @@
     "@sequelize/core": "^7.0.0-alpha.42",
     "@sequelize/sqlite3": "^7.0.0-alpha.46",
     "cors": "^2.8.5",
-    "express": "^4.21.1"
+    "express": "^4.21.1",
+    "nodemailer": "^7.0.3"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/node": "^22.13.9",
+    "@types/nodemailer": "^6.4.17",
     "nodemon": "^3.1.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.2"

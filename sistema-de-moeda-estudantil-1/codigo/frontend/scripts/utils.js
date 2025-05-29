@@ -13,6 +13,8 @@ function showToast(message, isSuccess) {
 }
 
 function singularize(str) {
+    if (!str) return '';
     if (str.endsWith('ies')) return str.slice(0, -3) + 'y';
     else if (str.endsWith('s')) return str.slice(0, -1);
+    return str;
 }
