@@ -2,6 +2,7 @@ import express from 'express';
 import Professor from '../models/professor';
 import Student from '../models/student';
 import Transaction from '../models/transaction';
+import { sendEmail } from '../services/email-service';
 
 export const getById = async (req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> => {
     try {
@@ -105,8 +106,22 @@ export const enviarMoedas = async (req: express.Request, res: express.Response, 
 
         const transacao = await professor.distribuirMoedas(aluno, Number(quantidade), mensagem, Transaction);
 
-        if (transacao) {
-            res.status(200).send({ message: 'Moedas enviadas com sucesso!', transacao, novoSaldoProfessor: professor.saldoMoedas, novoSaldoAluno: aluno.balance });
+         if (transacao) {
+            const emailSubject = 'Você recebeu moedas!';
+            const emailHtml = `
+                <h1>Parabéns, ${aluno.name}!</h1>
+                <p>Você recebeu ${quantidade} moedas do professor ${professor.name}.</p>
+                <p>Motivo: ${mensagem}</p>
+                <p>Seu novo saldo é: ${aluno.balance} moedas.</p>
+            `;
+            await sendEmail(aluno.email, emailSubject, emailHtml);
+
+            res.status(200).send({
+                message: 'Moedas enviadas com sucesso!',
+                transacao,
+                novoSaldoProfessor: professor.saldoMoedas,
+                novoSaldoAluno: aluno.balance
+            });
         } else {
             res.status(400).send('Falha ao enviar moedas. Saldo insuficiente ou quantidade inválida.');
         }

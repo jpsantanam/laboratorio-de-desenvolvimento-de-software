@@ -37,7 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
         li.className = 'list-group-item';
         let details = `
             <strong>Data:</strong> ${new Date(tx.dataHora).toLocaleString()}<br/>
-            <strong>Tipo:</strong> ${tx.tipoTransacao || 'N/A'}<br/> 
             <strong>Moedas:</strong> <span class="${tx.quantidadeMoedas > 0 ? 'text-success' : 'text-danger'} fw-bold">${tx.quantidadeMoedas}</span>`;
         if (tx.mensagem) {
             details += `<br/><strong>Detalhe:</strong> ${tx.mensagem}`;
