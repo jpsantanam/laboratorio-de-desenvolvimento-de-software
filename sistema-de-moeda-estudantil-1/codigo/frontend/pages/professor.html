@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Painel do Professor - Sistema de Moeda Estudantil</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Sistema de Moeda Estudantil</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#" id="professorName">Professor</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h2 id="welcomeProfessor">Bem-vindo(a), Professor(a)!</h2>
+        <p>Seu Saldo Atual: <strong id="saldoMoedasProfessor">0</strong> moedas</p>
+        <hr />
+
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Enviar Moedas</h3>
+                <form id="enviarMoedasForm">
+                    <div class="mb-3">
+                        <label for="selectAluno" class="form-label">Selecionar Aluno</label>
+                        <select class="form-select" id="selectAluno" required>
+                            <option value="">Carregando alunos...</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="quantidadeMoedas" class="form-label">Quantidade de Moedas</label>
+                        <input type="number" class="form-control" id="quantidadeMoedas" min="1" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="mensagemReconhecimento" class="form-label">Mensagem de Reconhecimento</label>
+                        <textarea class="form-control" id="mensagemReconhecimento" rows="3" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar Moedas</button>
+                </form>
+            </div>
+
+            <div class="col-md-6">
+                <h3>Extrato de Envios</h3>
+                <button class="btn btn-info mb-2" id="verExtratoProfessor">Atualizar Extrato</button>
+                <div id="extratoProfessorContainer">
+                    <ul class="list-group" id="listaExtratoProfessor">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toastContainer" class="toast-container position-fixed bottom-0 end-0 p-3"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../scripts/utils.js"></script>
+    <script src="../scripts/professor.js"></script>
+</body>
+
+</html>
