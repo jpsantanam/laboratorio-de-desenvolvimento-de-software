@@ -10,7 +10,9 @@ async function createDefaultStudents(): Promise<void> {
             password: 'senhamatheus',
             cpf: '11111111111',
             rg: '1010101010',
-            address: 'minha casa'
+            address: 'minha casa',
+            balance: 0,
+            idInstituicaoEnsino: 1
         });
 
         await Student.create({
@@ -19,7 +21,9 @@ async function createDefaultStudents(): Promise<void> {
             password: 'senhajoao',
             cpf: '22222222222',
             rg: '0101010101',
-            address: 'minha casa 2'
+            address: 'minha casa 2',
+            balance: 0,
+            idInstituicaoEnsino: 1
         });
 
         console.log("Default companies created successfully");
