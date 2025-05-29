@@ -1,7 +1,7 @@
 import { Router } from 'express';
 const studentRouter = Router();
 
-import { create, update, deleteById, getById, getAll, login } from '../controllers/student-controller';
+import { create, update, deleteById, getById, getAll, login, getExtratoAluno } from '../controllers/student-controller';
 
 studentRouter.route('/')
     .post(create)
@@ -14,5 +14,8 @@ studentRouter.route('/:id')
 
 studentRouter.route('/login')
     .post(login);
+
+studentRouter.route('/:idAluno/extrato')
+    .get(getExtratoAluno);
 
 export default studentRouter;
