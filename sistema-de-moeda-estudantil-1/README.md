@@ -59,4 +59,5 @@ Abaixo estão os diagramas que representam a arquitetura e o fluxo do sistema:
 ![Diagrama de Sequência - Listagem de Vantagens](./diagramas/sequência/listagem-de-vantagens.jpg)
 
 **Resgate de Vantagens:**
+
 ![Diagrama de Sequência - Resgate de Vantagens](./diagramas/sequência/troca-de-vantagens.jpg)
