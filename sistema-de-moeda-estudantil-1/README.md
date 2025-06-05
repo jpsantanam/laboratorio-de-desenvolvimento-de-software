@@ -1,4 +1,8 @@
-# Histórias de Usuário
+# Sistema de Moeda Estudantil 🪙
+
+Este projeto visa desenvolver um sistema de moeda estudantil que permita o reconhecimento e recompensa de alunos por meio de uma moeda virtual. Alunos podem acumular moedas e trocá-las por vantagens oferecidas por empresas parceiras. Professores podem distribuir moedas aos alunos como forma de reconhecimento.
+
+## Histórias de Usuário
 
 - 👤 Como usuário, eu quero realizar login no sistema para acessar as funcionalidades.
 
@@ -27,3 +31,32 @@
 - 👤 Como empresa parceira, quero cadastrar vantagens com nome, descrição, foto e custo em moedas para atrair alunos.
 
 - 👤 Como empresa parceira, quero receber um email com um código sempre que um aluno resgatar uma vantagem para validar a troca.
+
+## Diagramas do Sistema 📊
+
+Abaixo estão os diagramas que representam a arquitetura e o fluxo do sistema:
+
+### Diagrama de Caso de Uso
+![Diagrama de Caso de Uso](./diagramas/casos-de-uso/v1.png)
+
+### Diagrama de Classes
+![Diagrama de Classes](./diagramas/classes/v1.png)
+
+### Diagrama de Componentes
+![Diagrama de Componentes](./diagramas/componentes/v1.png)
+
+### Modelo Entidade-Relacionamento
+![Modelo Entidade-Relacionamento](./diagramas/entidade-relacionamento/v1.png)
+
+### Diagramas de Sequência
+
+**Cadastro de Vantagens:**
+
+![Diagrama de Sequência - Cadastro de Vantagens](./diagramas/sequência/cadastro-de-vantagem.jpg)
+
+**Distribuição de Moedas:**
+
+![Diagrama de Sequência - Listagem de Vantagens](./diagramas/sequência/listagem-de-vantagens.jpg)
+
+**Resgate de Vantagens:**
+![Diagrama de Sequência - Resgate de Vantagens](./diagramas/sequência/troca-de-vantagens.jpg)
